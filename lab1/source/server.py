@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import http.server
 import socketserver
-import requests
 import os
 
 #print('source code for "http.server":', http.server.__file__)
