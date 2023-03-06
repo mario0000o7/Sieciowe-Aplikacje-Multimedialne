@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import http.server
 import socketserver
+import requests
 import os
 
 #print('source code for "http.server":', http.server.__file__)
@@ -15,8 +16,11 @@ class web_server(http.server.SimpleHTTPRequestHandler):
             self.protocol_version = 'HTTP/1.1'
             self.send_response(200)
             self.send_header("Content-type", "text/html; charset=UTF-8")
-            self.end_headers()            
+            self.end_headers()
+            data=requests.get('http://localhost:4080/')
             self.wfile.write(b"Hello World!\n")
+            json_data = data.json()
+            self.wfile.write(f'<video src="{json_data["videoFile"]}" controls></video>'.encode('utf-8'))
         else:
             super().do_GET()
     
