@@ -19,8 +19,12 @@ class web_server(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             data=requests.get('http://localhost:4080/')
             self.wfile.write(b"Hello World!\n")
-            json_data = data.json()
-            self.wfile.write(f'<video src="{json_data["videoFile"]}" controls></video>'.encode('utf-8'))
+            # get url from json
+            json_data = requests.get('http://localhost:4080/').json()
+            # get video file from url
+            url=json_data["videoFile"].split('=')[1]
+            print(url)
+            self.wfile.write(f'<video src="{url}" controls></video>'.encode('utf-8'))
         else:
             super().do_GET()
     
