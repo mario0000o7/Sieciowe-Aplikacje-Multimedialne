@@ -10,21 +10,18 @@ class web_server(http.server.SimpleHTTPRequestHandler):
     
     def do_GET(self):
 
-        print(self.path)
-        
-        if self.path == '/':
+
+
+        #get url from videoFile tag
+        if self.path[0] == '/':
             self.protocol_version = 'HTTP/1.1'
             self.send_response(200)
             self.send_header("Content-type", "text/html; charset=UTF-8")
             self.end_headers()
-            data=requests.get('http://localhost:4080/')
-            self.wfile.write(b"Hello World!\n")
-            # get url from json
-            json_data = requests.get('http://localhost:4080/').json()
-            # get video file from url
-            url=json_data["videoFile"].split('=')[1]
-            print(url)
-            self.wfile.write(f'<video src="{url}" controls></video>'.encode('utf-8'))
+            url=self.path[self.path.find("videoFile=")]
+            self.wfile.write(f'<video width="320" height="240" controls><source src="{url}" type="video/mp4"></video>'.encode('utf-8'))
+
+
         else:
             super().do_GET()
     
