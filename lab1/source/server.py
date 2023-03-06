@@ -18,8 +18,10 @@ class web_server(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "text/html; charset=UTF-8")
             self.end_headers()
-            url=self.path[self.path.find("videoFile=")]
-            self.wfile.write(f'<video width="320" height="240" controls><source src="{url}" type="video/mp4"></video>'.encode('utf-8'))
+            url_video=self.path[self.path.find("videoFile=")]
+            url_audio=self.path[self.path.find("audioFile=")]
+            self.wfile.write(f'<video width="320" height="240" controls><source src="{url_video}" type="video/mp4"></video>'.encode('utf-8'))
+            self.wfile.write(f'<audio controls><source src="{url_audio}" type="audio/mpeg"></audio>'.encode('utf-8'))
 
 
         else:
