@@ -17,11 +17,13 @@ class web_server(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "text/html; charset=UTF-8")
             self.end_headers()
-            url_video=self.path[self.path.find("videoFile=")]
-            url_audio=self.path[self.path.find("audioFile=")]
-            if url_video!=-1:
+            f1=self.path.find("videoFile=")
+            f2=self.path.find("audioFile=")
+            url_video=self.path[f1]
+            url_audio=self.path[f2]
+            if f1!=-1:
                 self.wfile.write(f'<video width="320" height="240" controls><source src="{url_video}" type="video/mp4"></video>'.encode('utf-8'))
-            if url_audio!=-1:
+            if f2!=-1:
                 self.wfile.write(f'<audio controls><source src="{url_audio}" type="audio/mpeg"></audio>'.encode('utf-8'))
 
 
