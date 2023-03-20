@@ -32,9 +32,10 @@ app.get('/', (req, res) => {
         document.getElementById("audioPlayer").src = "cancel.mp3";
     }
 </script>
-<html>
+<html lang="pl">
 <head>
     <title>Lab2</title>
+    <meta charset="UTF-8">
 </head>
 
     <video id="videoPlayer" width="320" height="240" controls src=${videoQuery}></video>
