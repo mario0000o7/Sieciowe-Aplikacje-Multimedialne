@@ -7,9 +7,18 @@ let audioQuery
 let imgQuery
 
 app.get('/', (req, res) => {
-    videoQuery = req.query.videoFile;
-    audioQuery = req.query.audioFile;
-    imgQuery = req.query.imgFile;
+    if (req.query.videoFile == null)
+        videoQuery=""
+    else
+        videoQuery = req.query.videoFile;
+    if (req.query.audioFile == null)
+        audioQuery=""
+    else
+        audioQuery = req.query.audioFile;
+    if (req.query.imgFile == null)
+        imgQuery=""
+    else
+        imgQuery = req.query.imgFile;
 
     let html = `
 <!DOCTYPE html>
