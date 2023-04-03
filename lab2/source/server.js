@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 <!DOCTYPE html>
 
 <script>
+    var liczba = 0;
     function videoCancelFunction() {
     document.getElementById("videoPlayer").src = "cancel.mp4";
 
@@ -31,11 +32,49 @@ app.get('/', (req, res) => {
     function audioCancelFunction() {
         document.getElementById("audioPlayer").src = "cancel.mp3";
     }
+    function hideButton(button) {
+        document.getElementById("button").style.visibility = "hidden";
+    }
+    function showButton(button) {
+        document.getElementById("button").style.visibility = "visible";
+    }
+    function addVideoRow(){
+        var table = document.getElementById("playlist_table");
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML= liczba;
+        cell2.innerHTML= document.getElementById("videoPlayer").src;
+        cell3.innerHTML= "video";
+    }
+    function addAudioRow(){
+        var table = document.getElementById("playlist_table");
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML= liczba;
+        cell2.innerHTML= document.getElementById("audioPlayer").src;
+        cell3.innerHTML= "audio";
+       
+    }
+    function addImageRow(){
+        var table = document.getElementById("playlist_table");
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML= liczba;
+        cell2.innerHTML= document.getElementById("posterImage").src;
+        cell3.innerHTML= "image";
+    }
 </script>
 <html lang="pl">
 <head>
     <title>Lab2</title>
     <meta charset="UTF-8">
+    
 </head>
 
     <video id="videoPlayer" width="320" height="240" controls src=${videoQuery}></video>
@@ -46,6 +85,16 @@ app.get('/', (req, res) => {
     	<br>
         <button type="button" id="videoCancel" onclick="videoCancelFunction()">VideoCancel</button>
         <button type="button" id="audioCancel" onclick="audioCancelFunction()">AudioCancel</button>
+        <br>
+        <button type="button" id="audioAdd" onclick="addAudioRow()">Add audio</button>
+        <button type="button" id="videoAdd" onclick="addVideoRow()">Add video</button>
+        <button type="button" id="imageAdd" onclick="addImageRow()">Add image</button>
+        <table id="playlist_table">
+        <th>No.</th>
+        <th>URL</th>
+        <th>Type</th>
+        
+        </table>
 </html>
 
 `
