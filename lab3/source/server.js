@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         cell1.innerHTML= liczba;
-        cell2.innerHTML= document.getElementById("videoPlayer").src;
+        cell2.innerHTML= document.getElementById("videoPlayer").getAttribute("src")
         cell3.innerHTML= "Video";
         liczba++;
     }
@@ -59,7 +59,7 @@ app.get('/', (req, res) => {
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         cell1.innerHTML= liczba;
-        cell2.innerHTML= document.getElementById("audioPlayer").src;
+        cell2.innerHTML= document.getElementById("audioPlayer").getAttribute("src");
         cell3.innerHTML= "Audio";
         liczba++;
        
@@ -71,7 +71,7 @@ app.get('/', (req, res) => {
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         cell1.innerHTML= liczba;
-        cell2.innerHTML= document.getElementById("posterImage").src;
+        cell2.innerHTML= document.getElementById("posterImage").getAttribute("src");
         cell3.innerHTML= "Image";
         liczba++;
     }
