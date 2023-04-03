@@ -25,6 +25,12 @@ app.get('/', (req, res) => {
 
 <script>
     var liczba = 1;
+    let visibleAudio = document.getElementById("audioPlayer").style.visibility;
+    let visibleVideo = document.getElementById("videoPlayer").style.visibility;
+    if (visibleAudio==="hidden")
+        document.getElementById("audioAdd").style.visibility = "hidden";
+    if (visibleVideo==="hidden")
+        document.getElementById("videoAdd").style.visibility = "hidden";
     function videoCancelFunction() {
     document.getElementById("videoPlayer").src = "cancel.mp4";
 
