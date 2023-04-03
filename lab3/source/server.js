@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 <!DOCTYPE html>
 
 <script>
-    var liczba = 0;
+    var liczba = 1;
     function videoCancelFunction() {
     document.getElementById("videoPlayer").src = "cancel.mp4";
 
@@ -40,34 +40,37 @@ app.get('/', (req, res) => {
     }
     function addVideoRow(){
         var table = document.getElementById("playlist_table");
-        var row = table.insertRow(1);
+        var row = table.insertRow(liczba);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         cell1.innerHTML= liczba;
         cell2.innerHTML= document.getElementById("videoPlayer").src;
         cell3.innerHTML= "video";
+        liczba++;
     }
     function addAudioRow(){
         var table = document.getElementById("playlist_table");
-        var row = table.insertRow(1);
+        var row = table.insertRow(liczba);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         cell1.innerHTML= liczba;
         cell2.innerHTML= document.getElementById("audioPlayer").src;
         cell3.innerHTML= "audio";
+        liczba++;
        
     }
     function addImageRow(){
         var table = document.getElementById("playlist_table");
-        var row = table.insertRow(1);
+        var row = table.insertRow(liczba);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         cell1.innerHTML= liczba;
         cell2.innerHTML= document.getElementById("posterImage").src;
         cell3.innerHTML= "image";
+        liczba++;
     }
 </script>
 <html lang="pl">
