@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     var liczba = 1;
     let visibleAudio = document.getElementById("audioCancel").style.visibility;
     let visibleVideo = document.getElementById("videoCancel").style.visibility;
-    if (visibleAudio==="hidden")
+    if (visibleAudio==="hidden"||)
         document.getElementById("audioAdd").style.visibility = "hidden";
     if (visibleVideo==="hidden")
         document.getElementById("videoAdd").style.visibility = "hidden";
@@ -92,7 +92,7 @@ app.get('/', (req, res) => {
     	<br>
     	<img id="posterImage" src=${imgQuery}>
     	<br>
-        <button type="button" id="videoCancel" style="visibility: hidden" onclick="videoCancelFunction()">VideoCancel</button>
+        <button type="button" id="videoCancel" onclick="videoCancelFunction()">VideoCancel</button>
         <button type="button" id="audioCancel" onclick="audioCancelFunction()">AudioCancel</button>
         <br>
         <button type="button" id="audioAdd" onclick="addAudioRow()">Add audio</button>
