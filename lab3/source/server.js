@@ -1,10 +1,10 @@
 const express = require('express')
 
-const app = express()
+const app = express();
 
-let videoQuery
-let audioQuery
-let imgQuery
+let videoQuery= "";
+let audioQuery= "";
+let imgQuery= "";
 
 app.get('/', (req, res) => {
     if (req.query.videoFile == null)
@@ -25,24 +25,21 @@ app.get('/', (req, res) => {
 
 <script>
     var liczba = 1;
+    window.onload = function() {
     let visibleAudio = document.getElementById("audioCancel").style.visibility;
     let visibleVideo = document.getElementById("videoCancel").style.visibility;
+    
     if (visibleAudio==="hidden"||visibleAudio==="")
         document.getElementById("audioAdd").style.visibility = "hidden";
     if (visibleVideo==="hidden"||visibleVideo==="")
         document.getElementById("videoAdd").style.visibility = "hidden";
+    };
     function videoCancelFunction() {
     document.getElementById("videoPlayer").src = "cancel.mp4";
 
     }
     function audioCancelFunction() {
         document.getElementById("audioPlayer").src = "cancel.mp3";
-    }
-    function hideButton(button) {
-        document.getElementById("button").style.visibility = "hidden";
-    }
-    function showButton(button) {
-        document.getElementById("button").style.visibility = "visible";
     }
     function addVideoRow(){
         var table = document.getElementById("playlist_table");
