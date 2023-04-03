@@ -92,8 +92,8 @@ app.get('/', (req, res) => {
     	<br>
     	<img id="posterImage" src=${imgQuery}>
     	<br>
-        <button type="button" id="videoCancel" onclick="videoCancelFunction()">VideoCancel</button>
-        <button type="button" id="audioCancel" onclick="audioCancelFunction()">AudioCancel</button>
+        <button type="button" id="videoCancel" style="visibility: visible" onclick="videoCancelFunction()">VideoCancel</button>
+        <button type="button" id="audioCancel" style="visibility: visible" onclick="audioCancelFunction()">AudioCancel</button>
         <br>
         <button type="button" id="audioAdd" onclick="addAudioRow()">Add audio</button>
         <button type="button" id="videoAdd" onclick="addVideoRow()">Add video</button>
