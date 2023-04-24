@@ -41,6 +41,22 @@ app.get('/', (req, res) => {
     function audioCancelFunction() {
         document.getElementById("audioPlayer").src = "cancel.mp3";
     }
+    
+    function resetIterator() {
+        var table = document.getElementById("playlist_table");
+        for (var i = 1, row; row = table.rows[i]; i++) {
+            row.cells[0].innerHTML = i;
+        }
+    }
+    
+    function removeRowFunction(index) {
+        var table = document.getElementById("playlist_table");
+        table.deleteRow(index);
+        liczba--;
+        resetIterator();
+    }
+    
+    
     function addVideoRow(){
         var table = document.getElementById("playlist_table");
         var row = table.insertRow(liczba);
