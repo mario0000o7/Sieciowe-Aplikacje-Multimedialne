@@ -47,9 +47,11 @@ app.get('/', (req, res) => {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
         cell1.innerHTML= liczba;
         cell2.innerHTML= document.getElementById("videoPlayer").getAttribute("src")
         cell3.innerHTML= "Video";
+        cell4.innerHTML= '<button type="button" class="removeRowButton" style="visibility: visible">Delete</button>';
         liczba++;
     }
     function addAudioRow(){
@@ -58,9 +60,11 @@ app.get('/', (req, res) => {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
         cell1.innerHTML= liczba;
         cell2.innerHTML= document.getElementById("audioPlayer").getAttribute("src");
         cell3.innerHTML= "Audio";
+        cell4.innerHTML= '<button type="button" class="removeRowButton" style="visibility: visible">Delete</button>';
         liczba++;
        
     }
@@ -70,9 +74,11 @@ app.get('/', (req, res) => {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
         cell1.innerHTML= liczba;
         cell2.innerHTML= document.getElementById("posterImage").getAttribute("src");
         cell3.innerHTML= "Image";
+        cell4.innerHTML= '<button type="button" class="removeRowButton" style="visibility: visible">Delete</button>';
         liczba++;
     }
 </script>
