@@ -106,19 +106,18 @@ app.get('/', (req, res) => {
     <meta charset="UTF-8">
     
 </head>
-
-    <video id="videoPlayer" width="320" height="240" controls src=${videoQuery}></video>
+    <video id="videoPlayer" width="320" height="240" ${videoQuery ? "" : "hidden"} controls src=${videoQuery} ></video>
         <br>
-    	<audio id="audioPlayer" controls src=${audioQuery}></audio>
+    	<audio id="audioPlayer" ${audioQuery ? "" : "hidden"} controls src=${audioQuery} ></audio>
     	<br>
-    	<img id="posterImage" src=${imgQuery}>
+    	<img id="posterImage" ${imgQuery ? "" : "hidden"} src=${imgQuery} >
     	<br>
         <button type="button" id="videoCancel" style="visibility: visible" onclick="videoCancelFunction()">VideoCancel</button>
         <button type="button" id="audioCancel" style="visibility: visible" onclick="audioCancelFunction()">AudioCancel</button>
         <br>
         <button type="button" id="audioAdd" onclick="addAudioRow()">Add audio</button>
         <button type="button" id="videoAdd" onclick="addVideoRow()">Add video</button>
-        <button type="button" id="imageAdd" onclick="addImageRow()">Add image</button>
+        <button type="button" id="imgAdd" onclick="addImageRow()">Add image</button>
         <table id="playlist_table">
         <th>No.</th>
         <th>URL</th>
