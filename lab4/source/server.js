@@ -49,10 +49,12 @@ app.get('/', (req, res) => {
         }
     }
     
-    function removeRowFunction(index) {
+    function removeRowFunction(element) {
         var table = document.getElementById("playlist_table");
-        table.deleteRow(index);
+        var row = element.parentNode.parentNode;
+        table.deleteRow(row.rowIndex);
         liczba--;
+        
         resetIterator();
     }
     
@@ -80,7 +82,7 @@ app.get('/', (req, res) => {
         cell1.innerHTML= liczba;
         cell2.innerHTML= document.getElementById("audioPlayer").getAttribute("src");
         cell3.innerHTML= "Audio";
-        cell4.innerHTML= '<button type="button" class="removeRowButton" style="visibility: visible">Delete</button>';
+        cell4.innerHTML= '<button type="button" class="removeRowButton" onClick="removeRowFunction(this)" style="visibility: visible">Delete</button>';
         liczba++;
        
     }
