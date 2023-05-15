@@ -43,24 +43,23 @@ app.get('/', (req, res) => {
     }
     
     function moveRowUpFunction(element) {
-        var table = document.getElementById("playlist_table");
-        var row = element.parentNode.parentNode;
-        if (row.rowIndex === 1)
-            return;
-        for(var i = 1; i < table.rows.length; i++)
-            {
-                if(table.rows[i] === row)
-                {
-                    table.rows[i-1].parentNode.insertBefore(table.rows[i], table.rows[i-1]);
-                }
-            }
-        resetIterator();
+    var table = document.getElementById("playlist_table");
+    var row = element.parentNode.parentNode;
+    var headerRow = table.rows[0];
+
+    if (row.rowIndex === 1) {
+        row.parentNode.insertBefore(row, table.rows[table.rows.length]);
+    } else if (row.rowIndex > 1) {
+        table.rows[row.rowIndex - 1].parentNode.insertBefore(row, table.rows[row.rowIndex - 1]);
     }
+    
+    resetIterator();
+}
     function moveRowDownFunction(element) {
         var table = document.getElementById("playlist_table");
         var row = element.parentNode.parentNode;
         if (row.rowIndex === table.rows.length - 1) {
-            return;
+            row.parentNode.insertBefore(row, table.rows[0]);
         }
     
         var nextRow = table.rows[row.rowIndex + 1];
