@@ -69,7 +69,9 @@ app.get('/', (req, res) => {
         cell1.innerHTML= liczba;
         cell2.innerHTML= document.getElementById("videoPlayer").getAttribute("src")
         cell3.innerHTML= "Video";
-        cell4.innerHTML= '<button type="button" class="removeRowButton" onClick="removeRowFunction(this)" style="visibility: visible">Delete</button>';
+        cell4.innerHTML= '<button type="button" class="removeRowButton" onClick="removeRowFunction(this)" style="visibility: visible">Delete</button>' +
+         '<button type="button class="moveRowUpButton" onClick="moveRowUpFunction(this)" style="visibility: visible">Up</button>' +
+            '<button type="button class="moveRowDownButton" onClick="moveRowDownFunction(this)" style="visibility: visible">Dow</button>';
         liczba++;
     }
     function addAudioRow(){
