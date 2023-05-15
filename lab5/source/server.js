@@ -42,6 +42,21 @@ app.get('/', (req, res) => {
         document.getElementById("audioPlayer").src = "cancel.mp3";
     }
     
+    function moveRowUpFunction(element) {
+        var table = document.getElementById("playlist_table");
+        var row = element.parentNode.parentNode;
+        if (row.rowIndex === 1)
+            return;
+        for(var i = 1; i < table.rows.length; i++)
+            {
+                if(table.rows[i] === row)
+                {
+                    table.rows[i-1].parentNode.insertBefore(table.rows[i], table.rows[i-1]);
+                }
+            }
+        resetIterator();
+    }
+    
     function resetIterator() {
         var table = document.getElementById("playlist_table");
         for (var i = 1, row; row = table.rows[i]; i++) {
@@ -84,7 +99,9 @@ app.get('/', (req, res) => {
         cell1.innerHTML= liczba;
         cell2.innerHTML= document.getElementById("audioPlayer").getAttribute("src");
         cell3.innerHTML= "Audio";
-        cell4.innerHTML= '<button type="button" class="removeRowButton" onClick="removeRowFunction(this)" style="visibility: visible">Delete</button>';
+        cell4.innerHTML= '<button type="button" class="removeRowButton" onClick="removeRowFunction(this)" style="visibility: visible">Delete</button>' +
+         '<button type="button class="moveRowUpButton" onClick="moveRowUpFunction(this)" style="visibility: visible">Up</button>' +
+            '<button type="button class="moveRowDownButton" onClick="moveRowDownFunction(this)" style="visibility: visible">Dow</button>';
         liczba++;
        
     }
@@ -98,7 +115,9 @@ app.get('/', (req, res) => {
         cell1.innerHTML= liczba;
         cell2.innerHTML= document.getElementById("posterImage").getAttribute("src");
         cell3.innerHTML= "Image";
-        cell4.innerHTML= '<button type="button" class="removeRowButton" onClick="removeRowFunction(this)" style="visibility: visible">Delete</button>';
+        cell4.innerHTML= '<button type="button" class="removeRowButton" onClick="removeRowFunction(this)" style="visibility: visible">Delete</button>' +
+         '<button type="button class="moveRowUpButton" onClick="moveRowUpFunction(this)" style="visibility: visible">Up</button>' +
+            '<button type="button class="moveRowDownButton" onClick="moveRowDownFunction(this)" style="visibility: visible">Dow</button>';
         liczba++;
     }
 </script>
