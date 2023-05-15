@@ -56,22 +56,22 @@ app.get('/', (req, res) => {
             }
         resetIterator();
     }
-    function moveRowDownFunction(element) {var table = document.getElementById("playlist_table");
+    function moveRowDownFunction(element) {
+        var table = document.getElementById("playlist_table");
         var row = element.parentNode.parentNode;
-        if (row.rowIndex === table.rows.length-1)
+        if (row.rowIndex === table.rows.length - 1) {
             return;
-        for(var i = 1; i < table.rows.length; i++)
-            {
-                if(table.rows[i] === row)
-                {
-                    table.rows[i+1].parentNode.insertBefore(table.rows[i], table.rows[i+2]);
-                }
-            }
+        }
+    
+        var nextRow = table.rows[row.rowIndex + 1];
+        table.tBodies[0].insertBefore(row, nextRow.nextSibling);
+    
         resetIterator();
         
     }
     
     function resetIterator() {
+        console.log("reset");
         var table = document.getElementById("playlist_table");
         for (var i = 1, row; row = table.rows[i]; i++) {
             row.cells[0].innerHTML = i;
