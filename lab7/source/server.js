@@ -156,13 +156,14 @@ app.get('/', (req, res) => {
     
 </head>
     <video id="videoPlayer" width="320" height="240" ${videoQuery ? "" : "hidden"} controls src=${videoQuery} ></video>
-    <button type="button" id="videoPlay" onclick="playVideoFunction()">Play Video</button>
-    <button type="button" id="videoPause" onclick="pauseVideoFunction()">Pause Video</button>
-
+    `
+    let html2=`
+   
         <br>
     	<audio id="audioPlayer" ${audioQuery ? "" : "hidden"} controls src=${audioQuery} ></audio>
-    	<button type="button" id="audioPlay" onclick="playAudioFunction()">Play Audio</button>
-    	<button type="button" id="audioPause" onclick="pauseAudioFunction()">Pause Audio</button>
+    	`
+    let html3=`
+    	
     	<br>
     	<img id="posterImage" ${imgQuery ? "" : "hidden"} src=${imgQuery} >
     	<br>
@@ -182,7 +183,24 @@ app.get('/', (req, res) => {
 </html>
 
 `
-    res.send(html)
+    let videoButtons= `<br>
+    <button type="button" id="videoPlay" onclick="playVideoFunction()">Play Video</button>
+    <button type="button" id="videoPause" onclick="pauseVideoFunction()">Pause Video</button>
+    <br>`
+    let audioButtons= `<br>
+    	<button type="button" id="audioPlay" onclick="playAudioFunction()">Play Audio</button>
+    	<button type="button" id="audioPause" onclick="pauseAudioFunction()">Pause Audio</button>
+    	`
+    if(videoQuery){
+        html+=videoButtons;
+    }
+    if(audioQuery){
+        html2+=audioButtons;
+    }
+
+
+
+    res.send(html+html2+html3);
 
 })
 
