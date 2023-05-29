@@ -50,6 +50,13 @@ app.get('/', (req, res) => {
         document.getElementById("videoPlayer").pause();
     }
     
+    function playAudioFunction(){
+        document.getElementById("audioPlayer").play();
+    }
+    function pauseAudioFunction(){
+        document.getElementById("audioPlayer").pause();
+    }
+    
     function moveRowUpFunction(element) {
     var table = document.getElementById("playlist_table");
     var row = element.parentNode.parentNode;
@@ -154,6 +161,8 @@ app.get('/', (req, res) => {
 
         <br>
     	<audio id="audioPlayer" ${audioQuery ? "" : "hidden"} controls src=${audioQuery} ></audio>
+    	<button type="button" id="audioPlay" onclick="playAudioFunction()">Play Audio</button>
+    	<button type="button" id="audioPause" onclick="pauseAudioFunction()">Pause Audio</button>
     	<br>
     	<img id="posterImage" ${imgQuery ? "" : "hidden"} src=${imgQuery} >
     	<br>
